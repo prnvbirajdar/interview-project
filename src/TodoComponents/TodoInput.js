@@ -10,12 +10,12 @@ export default function TodoInput({ setTodoList, todoList }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('todo submitted');
     if (input !== '') {
       setTodoList([
         { id: nanoid(10), title: input, completed: false },
         ...todoList
       ]);
+      console.log('todo submitted');
     }
     setInput('');
   };

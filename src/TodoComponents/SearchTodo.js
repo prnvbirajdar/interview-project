@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 
 export default function SearchTodo({
   todoList,
-  setTodoList,
-  filteredTodos,
   setFilteredTodos
 }) {
   const [searchText, setSearchText] = useState('');

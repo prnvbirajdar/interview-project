@@ -4,7 +4,6 @@ export default function TodoList({
   todoList,
   setTodoList,
   filteredTodos,
-  setFilteredTodos
 }) {
   const [editInput, setEditInput] = useState('');
 
