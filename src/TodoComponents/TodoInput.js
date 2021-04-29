@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid';
 
 export default function TodoInput({ setTodoList, todoList }) {
   const [input, setInput] = useState('');
-  const { nanoid } = require('nanoid');
 
   const handleChange = e => {
     setInput(e.target.value);

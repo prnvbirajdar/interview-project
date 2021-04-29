@@ -1,6 +1,12 @@
-export default function TodoList({ todoList, setTodoList }) {
-  const [editInput, setEditInput] = useState('');
+import { useState } from 'react';
 
+export default function TodoList({
+  todoList,
+  setTodoList,
+  filteredTodos,
+  setFilteredTodos
+}) {
+  const [editInput, setEditInput] = useState('');
 
   const handleDelete = todoId => {
     const newTodoList = todoList.filter(({ id }) => id !== todoId);
@@ -18,20 +24,19 @@ export default function TodoList({ todoList, setTodoList }) {
     setTodoList(newList);
   };
 
-   //   const handleEdit = id => {
-  //     // const newTodoList = todoList.filter((todo, index) => index !== id);
-  //     const todo = todoList.filter((todo, index) => index === id);
-  //     const todoString = todo[0];
-  //     setInput(todoString.title);
-  //     console.log(todo[0]);
-  //   };
+  const handleEdit = todoId => {
+    // const newTodoList = todoList.filter((todo, index) => index !== id);
+    const todo = todoList.find(todo => todo.id === todoId);
+
+    console.log(todo);
+  };
 
   return (
     <ul className="border w-1/4 space-y-3">
-      {todoList &&
-        todoList.map(({ id, title, completed }) => (
+      {filteredTodos &&
+        filteredTodos.map(({ id, title, completed }) => (
           <li key={id} className="space-x-5 flex">
-             <button onClick={() => handleEdit(index)}>EDIT</button> 
+            <button onClick={() => handleEdit(id)}>EDIT</button>
             <span
               style={{
                 textDecoration: completed ? 'line-through' : 'none'
