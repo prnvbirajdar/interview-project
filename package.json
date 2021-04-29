@@ -26,6 +26,7 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1"
@@ -43,8 +44,6 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "eslint-plugin-sonarjs": "^0.5.0",
-    "eslint-plugin-unicorn": "^23.0.0",
-    "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "postcss": "^8.2.13",
     "prettier": "2.0.5",
