@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 export default function TodoInput({ setTodoList, todoList }) {
   const [input, setInput] = useState('');
+  const { nanoid } = require('nanoid');
 
   const handleChange = e => {
     setInput(e.target.value);
@@ -11,7 +13,10 @@ export default function TodoInput({ setTodoList, todoList }) {
     e.preventDefault();
     console.log('todo submitted');
     if (input !== '') {
-      setTodoList([...todoList, { title: input, completed: false }]);
+      setTodoList([
+        ...todoList,
+        { id: nanoid(10), title: input, completed: false }
+      ]);
     }
     setInput('');
   };

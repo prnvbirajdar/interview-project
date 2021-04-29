@@ -1,24 +1,41 @@
 export default function TodoList({ todoList, setTodoList }) {
-  const handleDelete = id => {
-    const newTodoList = todoList.filter((todo, index) => index !== id);
+  const handleDelete = todoId => {
+    const newTodoList = todoList.filter(({ id }) => id !== todoId);
     setTodoList(newTodoList);
+  };
+
+  const toggleTodo = todoId => {
+    const newList = todoList.map(todo => {
+      if (todoId === todo.id) {
+        const updatedTodo = { ...todo, completed: !todo.completed };
+
+        console.log(updatedTodo);
+        return updatedTodo;
+      }
+
+      return newList;
+    });
+
+    console.log(newList);
+
+    //setTodoList(newList);
   };
 
   return (
     <ul className="border w-1/4 space-y-3">
       {todoList &&
-        todoList.map((todo, index) => (
-          <li key={index} className="space-x-5 flex">
+        todoList.map(({ id, title, completed }) => (
+          <li key={id} className="space-x-5 flex">
             {/* <button onClick={() => handleEdit(index)}>EDIT</button> */}
             <span
               style={{
-                textDecoration: todo?.completed ? 'line-through' : ''
+                textDecoration: completed ? 'line-through' : 'none'
               }}
-              // onClick={() => toggleTodo(index)}
+              onClick={() => toggleTodo(id)}
             >
-              {todo?.title}
+              {title}
             </span>
-            <button onClick={() => handleDelete(index)}>X</button>
+            <button onClick={() => handleDelete(id)}>X</button>
           </li>
         ))}
     </ul>
