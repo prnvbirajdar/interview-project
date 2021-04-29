@@ -13,13 +13,7 @@ export default function todo() {
   ]);
   console.log(todoList);
 
-  //   const handleEdit = id => {
-  //     // const newTodoList = todoList.filter((todo, index) => index !== id);
-  //     const todo = todoList.filter((todo, index) => index === id);
-  //     const todoString = todo[0];
-  //     setInput(todoString.title);
-  //     console.log(todo[0]);
-  //   };
+ 
 
   return (
     <>

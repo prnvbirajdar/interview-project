@@ -14,8 +14,8 @@ export default function TodoInput({ setTodoList, todoList }) {
     console.log('todo submitted');
     if (input !== '') {
       setTodoList([
-        ...todoList,
-        { id: nanoid(10), title: input, completed: false }
+        { id: nanoid(10), title: input, completed: false },
+        ...todoList
       ]);
     }
     setInput('');
