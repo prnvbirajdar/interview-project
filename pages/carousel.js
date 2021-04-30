@@ -62,20 +62,26 @@ export default function carousel() {
         {imgList.map((list, index) => {
           return (
             <div
-              className={index === current ? 'opacity-1 transition duration-500 ' : "opacity-0 transition duration-500 transform scale-90"}
+              className={
+                index === current
+                  ? 'opacity-1 transition duration-500 '
+                  : 'opacity-0 transition duration-500 transform scale-90'
+              }
               key={index}
             >
-            {index === current &&  <img
-                src={list.image}
-                alt="image"
-                className="w-[1000px] h-[600px] rounded-lg "
-              />}
+              {index === current && (
+                <img
+                  src={list.image}
+                  alt="image"
+                  className="w-[1000px] h-[600px] rounded-lg "
+                />
+              )}
             </div>
           );
         })}
       </section>
-      {/* <div className="container flex flex-col mx-auto w-2/3 border p-6 space-y-5"></div>
-      <section className="flex items-center h-screen"></section> */}
+      {/* 
+      <section className="flex items-center h-screen"><div className="container flex flex-col mx-auto w-2/3 border p-6 space-y-5"></div></section> */}
     </>
   );
 }
