@@ -55,9 +55,9 @@ const Form = () => {
         </section>
       ) : (
         <section className="flex items-center h-screen">
-          <div
-            className="container flex flex-col mx-auto w-2/3 border p-6 space-y-5"
-          >LOGIN SUCCESS</div>
+          <div className="container flex flex-col mx-auto w-2/3 border p-6 space-y-5">
+            LOGIN SUCCESS
+          </div>
         </section>
       )}
     </>
