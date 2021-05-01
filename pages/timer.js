@@ -9,7 +9,7 @@ export default function timer() {
     if (timerOn) {
       interval = setInterval(() => {
         setTime(time => time + 1);
-      }, 1000);
+      }, 10);
     } else {
       clearTimeout(interval);
     }
