@@ -19,8 +19,8 @@ export default function timer() {
 
   return (
     <>
-      <section className="flex items-center h-screen">
-        <div className="container flex flex-col mx-auto w-2/3 border p-6 space-y-5 ">
+      <section className="flex items-center h-screen bg-gray-200">
+        <div className="container flex flex-col mx-auto bg-white  rounded-lg w-2/3 border p-6 space-y-5 ">
           <div className="text-center m-5 space-y-2">
             <p>Stopwatch: </p>
             {time < 3600 ? (
