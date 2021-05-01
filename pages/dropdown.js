@@ -6,12 +6,14 @@ import DropdownMenu from '../src/DropdownComponents/DropdownMenu';
 export default function dropdown() {
   const [selectedTopic, setSelectedTopic] = useState('');
 
+  // coursesTags give a string of all tags
   let coursesTags = data.map(({ tag }) => tag);
+  // removes all repeated tags
   coursesTags = [...new Set(coursesTags)];
 
+  // filteredList according to tag selected
   const newList = data.filter(({ tag }) => tag === selectedTopic);
 
-  console.log(newList);
   return (
     <>
       <section className="flex h-screen">
@@ -20,7 +22,11 @@ export default function dropdown() {
             setSelectedTopic={setSelectedTopic}
             coursesTags={coursesTags}
           />
-          <DropdownList selectedTopic={selectedTopic} newList={newList} data={data} />
+          <DropdownList
+            selectedTopic={selectedTopic}
+            newList={newList}
+            data={data}
+          />
         </div>
       </section>
     </>
