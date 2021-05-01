@@ -1,20 +1,21 @@
 import React from 'react';
 
 export default function timer() {
-  const [time, setTime] = React.useState(3661);
+  const [time, setTime] = React.useState(0);
   const [timerOn, setTimerOn] = React.useState(false);
 
-    React.useEffect(() => {
-      if (timerOn) {
-        const interval = setInterval(() => {
-          setTime(time => time + 1);
-        }, 1000);
+  React.useEffect(() => {
+    let interval = null;
+    if (timerOn) {
+      interval = setInterval(() => {
+        setTime(time => time + 1);
+      }, 1000);
+    } else {
+      clearTimeout(interval);
+    }
 
-        return () => clearTimeout(interval);
-      } else {
-        setTime(0);
-      }
-    }, [timerOn]);
+    return () => clearTimeout(interval);
+  }, [timerOn]);
 
   return (
     <>
@@ -34,7 +35,7 @@ export default function timer() {
             )}
           </div>
           <div className="mx-auto space-x-5">
-            {!timerOn ? (
+            {!timerOn && (
               <button
                 className="py-2 px-4 mx-auto bg-green-400 rounded-lg"
                 onClick={() => {
@@ -43,14 +44,21 @@ export default function timer() {
               >
                 Start
               </button>
-            ) : (
+            )}
+
+            {!timerOn && time !== 0 && (
+              <button
+                className="py-2 px-4 mx-auto bg-blue-400 rounded-lg"
+                onClick={() => {
+                  setTime(0);
+                }}
+              >
+                Reset
+              </button>
+            )}
+
+            {timerOn && (
               <div className="space-x-5">
-                <button
-                  className="py-2 px-4 mx-auto bg-blue-400 rounded-lg"
-                  //   onClick={handleStop}
-                >
-                  Pause
-                </button>
                 <button
                   className="py-2 px-4 mx-auto bg-red-400 rounded-lg"
                   onClick={() => {
@@ -58,6 +66,14 @@ export default function timer() {
                   }}
                 >
                   Stop
+                </button>
+                <button
+                  className="py-2 px-4 mx-auto bg-blue-400 rounded-lg"
+                  onClick={() => {
+                    setTime(0);
+                  }}
+                >
+                  Reset
                 </button>
               </div>
             )}
