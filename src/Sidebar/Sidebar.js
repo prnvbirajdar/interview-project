@@ -1,18 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function Sidebar({ isOpen , setIsOpen, navOptions}) {
+export default function Sidebar({ isOpen, setIsOpen, navOptions }) {
   return (
     isOpen && (
-      <aside className="fixed top-0 left-0 w-full h-full bg-gray-600 z-30">
-        <div
+        <aside className="absolute top-0 left-0 w-full h-full bg-gray-600 z-30 transform -translate-x-full transition duration-300 ease-in-out">
+      {/* <aside
+         className={
+          (`${!isOpen}` ? '-translate-x-full' : '-translate-x-full',
+          'absolute top-0 left-0 w-full h-full bg-gray-600 z-30 transform  transition duration-500 ease-in-out')
+        }
+      > */}
+        {/* <aside className="absolute top-0 left-0 w-full h-full bg-gray-600 z-30 transform -translate-x-full transition duration-300 ease-in-out"> */}
+
+        {/* <div
           className="flex justify-end mr-10 mt-3 cursor-pointer"
           onClick={() => setIsOpen(false)}
         >
           <X />
-        </div>
+        </div> */}
+
+        
         <nav className="text-center ">
-          <ul className="flex flex-col justify-center h-screen">
+          <ul className="flex flex-col justify-center mt-10">
             {navOptions.map((option, index) => {
               return (
                 <li key={index} className="m-10">
