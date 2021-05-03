@@ -26,6 +26,7 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.3.2",
     "axios": "^0.21.1",
     "nanoid": "^3.1.22",
     "next": "10.0.7",

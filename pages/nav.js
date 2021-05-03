@@ -9,7 +9,7 @@ export default function nav() {
 
   return (
     <>
-      <header className="fixed top-0 flex justify-between items-center w-full border px-10 h-12 bg-blue-300">
+      <header className="fixed top-0     flex justify-between items-center w-full border px-10 h-12 bg-blue-300">
         <div className=" z-40">Logo</div>
 
         <nav className="md:block hidden">

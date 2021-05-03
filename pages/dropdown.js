@@ -17,7 +17,7 @@ export default function dropdown() {
   return (
     <>
       <section className="flex h-screen">
-        <div className="container flex flex-col mx-auto w-2/3 border p-6 space-y-5">
+        <div className="container flex flex-col mx-auto w-1/3 border p-6 space-y-5">
           <DropdownMenu
             setSelectedTopic={setSelectedTopic}
             coursesTags={coursesTags}
