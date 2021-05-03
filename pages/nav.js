@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Sidebar from '../src/Sidebar/sidebar';
+import Sidebar from '../src/Nav/sidebar';
 
 const navOptions = ['Home', 'Projects', 'Blog', 'About'];
 
@@ -9,8 +9,8 @@ export default function nav() {
 
   return (
     <>
-      <header className="flex justify-between items-center w-full border px-10 h-12 bg-blue-300">
-        <div className="z-40">Logo</div>
+      <header className="fixed top-0 flex justify-between items-center w-full border px-10 h-12 bg-blue-300">
+        <div className=" z-40">Logo</div>
 
         <nav className="md:block hidden">
           <ul className="flex space-x-10 ">
@@ -33,26 +33,39 @@ export default function nav() {
           {!isOpen ? <Menu /> : <X />}
         </div>
 
-        {/* <nav className="text-center ">
-          <ul className="flex flex-col justify-center mt-10">
-            {navOptions.map((option, index) => {
-              return (
-                <li key={index} className="m-10" onClick={()=>{setIsOpen(false)}}>
-                  <Link href="/">
-                    <a>{option}</a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav> */}
-
         <Sidebar
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           navOptions={navOptions}
         />
       </header>
+      <main>
+        <img
+          src="https://images.unsplash.com/photo-1619958405137-8dc6281021bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+          alt=""
+        />
+         <img
+          src="https://images.unsplash.com/photo-1619958405137-8dc6281021bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+          alt=""
+        />
+         <img
+          src="https://images.unsplash.com/photo-1619958405137-8dc6281021bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+          alt=""
+        />
+         <img
+          src="https://images.unsplash.com/photo-1619958405137-8dc6281021bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+          alt=""
+        />
+         <img
+          src="https://images.unsplash.com/photo-1619958405137-8dc6281021bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+          alt=""
+        />
+         <img
+          src="https://images.unsplash.com/photo-1619958405137-8dc6281021bb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+          alt=""
+        />
+        
+      </main>
     </>
   );
 }
