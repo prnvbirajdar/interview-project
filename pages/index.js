@@ -16,13 +16,14 @@ export default function Home() {
 
   // using axios
   const axiosGetApi = async () => {
-    const resp = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    const resp = await axios('https://jsonplaceholder.typicode.com/users');
     console.log(resp.data);
   };
 
   useEffect(() => {
     axiosGetApi();
   }, []);
+
 
   return (
     <div>
@@ -32,11 +33,15 @@ export default function Home() {
       </Head>
 
       <main>
-        <button
-          onClick={getAPI}
+        <h1
+          //onClick={getAPI}
           className="text-5xl text-[#641231] text-center w-full border"
         >
           Welcome to Next.js!
+        </h1>
+
+        <button type="submit" onClick={getAPI}>
+          Click me
         </button>
 
         {apiList &&
@@ -46,17 +51,14 @@ export default function Home() {
               <p>{post.body}</p>
             </div>
           ))}
-
-        {/* <section className="container mx-auto border text-center">
-          <div>
-            <img
-              className="h-80 mx-auto object-fit"
-              src="/picture.jpg"
-              alt="Profile"
-            />
-          </div>
-        </section> */}
       </main>
     </div>
   );
 }
+
+export const sumPositiveNum = (num1, num2) => {
+  if (num1 < 0 || num2 < 2) throw new Error('Num should be positive');
+
+  return num1 + num2;
+};
+

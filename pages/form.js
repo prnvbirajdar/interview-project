@@ -21,7 +21,6 @@ const Form = () => {
           >
             <label htmlFor="name">Name</label>
             <input
-              className="border-gray-500 focus:border-indigo-900 focus:ring-indigo-600 rounded-lg shadow-sm"
               type="text"
               value={info.name}
               name="name"
@@ -31,7 +30,6 @@ const Form = () => {
             {nameError && <div className="text-red-700">{nameError}</div>}
             <label htmlFor="email">Email</label>
             <input
-              className="border-gray-500 focus:border-indigo-900 focus:ring-indigo-600 rounded-lg shadow-sm"
               type="text"
               value={info.email}
               name="email"
@@ -42,7 +40,6 @@ const Form = () => {
 
             <label htmlFor="password">Password</label>
             <input
-              className="border-gray-500 focus:border-indigo-900 focus:ring-indigo-600 rounded-lg shadow-sm"
               type="password"
               value={info.password}
               name="password"

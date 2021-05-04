@@ -3,7 +3,7 @@ export default function DropdownMenu({ setSelectedTopic, coursesTags }) {
     <form action="/action_page.php">
       <label htmlFor="courses">Choose a topic:</label>
       <select
-        className="border bg-gray-100 w-full p-2 rounded-md"
+        className="form-select border bg-gray-100 w-full p-2 rounded-md"
         name="topic"
         onChange={e => setSelectedTopic(e.target.value)}
       >

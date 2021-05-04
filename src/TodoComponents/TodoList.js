@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
-export default function TodoList({
-  todoList,
-  setTodoList,
-  filteredTodos,
-}) {
+export default function TodoList({ todoList, setTodoList, filteredTodos }) {
   const [editInput, setEditInput] = useState('');
 
   const handleDelete = todoId => {

@@ -1,16 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchTodo from '../src/TodoComponents/SearchTodo';
 import TodoInput from '../src/TodoComponents/TodoInput';
 import TodoList from '../src/TodoComponents/TodoList';
+// import useLocalStorage from '../src/TodoComponents/useLocalStorage';
+
 
 export default function todo() {
-  const [todoList, setTodoList] = useState([
-    { id: 1, title: '1todo', completed: false },
-    { id: 2, title: '2todo', completed: false },
-    { id: 3, title: '3todo', completed: false }
-  ]);
+
+  //  const [todoList, setTodoList] = useLocalStorage('todoUsingLocalStorageHook', []);
+
+  const [todoList, setTodoList] = useState([]);
 
   const [filteredTodos, setFilteredTodos] = useState([]);
+
+  // receives and stores the new todoList on every rerender 
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'));
+    if (storedTodos) setTodoList(storedTodos);
+  }, []);
+
+  // saving the todos in browser storage to prevent loss of todos on refreshing tab
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todoList));
+  }, [todoList]);
 
   return (
     <>
