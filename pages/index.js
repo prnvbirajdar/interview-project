@@ -44,7 +44,7 @@ export default function test() {
 
   return (
     <>
-      <section className="flex flex-col min-h-screen justify-center items-center font-bold text-4xl bg-gray-100">
+      <section className="flex flex-col min-h-screen justify-center items-center font-bold text-4xl text-gray-800 bg-gray-100">
         <div className=" flex flex-col mx-auto w-11/12 sm:max-w-md  bg-indigo-300  rounded-lg  border p-6 space-y-5 ">
           {/* Input value displays the inputs or the final result */}
           <DisplayComponent finalResult={finalResult} input={input} />
