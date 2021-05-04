@@ -34,7 +34,6 @@ export default function Home() {
 
       <main>
         <h1
-          //onClick={getAPI}
           className="text-5xl text-[#641231] text-center w-full border"
         >
           Welcome to Next.js!

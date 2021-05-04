@@ -30,6 +30,7 @@
     "@tailwindcss/forms": "^0.3.2",
     "@testing-library/user-event": "^13.1.8",
     "axios": "^0.21.1",
+    "date-fns": "^2.21.1",
     "nanoid": "^3.1.22",
     "next": "10.0.7",
     "react": "17.0.1",
