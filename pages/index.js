@@ -12,7 +12,7 @@ const symArr = ['+', '-', '*', '/'];
 export default function test() {
   // Decided to go ahead with an empty string, since it was easier to use concat and eval methods on strings
   const [input, setInput] = React.useState('');
-  // State stores the final result
+  // finalResult stores the final result in Number primitive and replaces the input value in the DisplayComponent
   const [finalResult, setFinalResult] = React.useState(0);
 
   // function that handles onClick functionality for all numbers and signs
@@ -40,6 +40,8 @@ export default function test() {
       setFinalResult(eval(input));
       setInput('');
     } catch (error) {
+      // if someone enters num++++ or ++++num or num====, 
+      // instead of crashing, the app resets the state and works normally
       setInput('Error');
       setInput('');
     }
