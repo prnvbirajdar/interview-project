@@ -8,7 +8,7 @@ export default function NumberButtons({ numArr, numOperatorClick }) {
           return (
             <div key={index} className="text-center">
               <button
-                className="p-3 rounded-lg shadow-md cursor-pointer w-full font-bold bg-blue-50 hover:bg-blue-100 transition-colors duration-200"
+                className="btn"
                 onClick={() => numOperatorClick(value)}
               >
                 {value}
