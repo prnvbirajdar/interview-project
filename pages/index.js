@@ -1,63 +1,66 @@
-/* eslint-disable unicorn/no-null */
-import axios from 'axios';
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import React from 'react';
+import ClearComponent from '../src/Components/ClearComponent';
+import DisplayComponent from '../src/Components/DisplayComponent';
+import NumberButtons from '../src/Components/NumberButtons';
+import OperatorButton, {
+  EqualsOperator
+} from '../src/Components/OperatorButton';
 
-export default function Home() {
-  const [apiList, setApiList] = useState(null);
+const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const symArr = ['+', '-', '*', '/'];
 
-  // using fetch
-  const getAPI = async () => {
-    const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const results = await resp.json();
-    setApiList(results);
-    return results;
+export default function test() {
+  const [result, setResult] = React.useState('');
+  const [finalResult, setFinalResult] = React.useState(0);
+
+  // function that handles onClick functionality for all numbers and signs
+  const click = value => {
+    setFinalResult(0);
+    setResult(result.concat(value));
   };
 
-  // using axios
-  const axiosGetApi = async () => {
-    const resp = await axios('https://jsonplaceholder.typicode.com/users');
-    console.log(resp.data);
+  // function for C button: it clears last value and resets final value
+  const clearLastValue = () => {
+    setResult(result.slice(0, result.length - 1));
+    setFinalResult(0);
   };
 
-  useEffect(() => {
-    axiosGetApi();
-  }, []);
+  // function for Clear button: it clears everything and resets back to intial state
+  const clearEverything = () => {
+    setResult('');
+    setFinalResult(0);
+  };
 
+  // function for the = symbol: it calculates and gives final results or displays error message if there's a wrong
+  // operation
+  const calulateResult = () => {
+    try {
+      setFinalResult(eval(result).toString());
+      setResult('');
+    } catch (error) {
+      setResult('Error');
+    }
+  };
 
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1
-          className="text-5xl text-[#641231] text-center w-full border"
-        >
-          Welcome to Next.js!
-        </h1>
-
-        <button type="submit" onClick={getAPI}>
-          Click me
-        </button>
-
-        {apiList &&
-          apiList?.map(post => (
-            <div key={post.id}>
-              <p>{post.title}</p>
-              <p>{post.body}</p>
-            </div>
-          ))}
-      </main>
-    </div>
+    <>
+      <section className="flex flex-col min-h-screen justify-center items-center font-bold text-4xl bg-gray-100">
+        <div className=" flex flex-col mx-auto w-11/12 sm:max-w-md  bg-blue-200  rounded-lg  border p-6 space-y-5 ">
+          {/* Input value displays the inputs or the final result */}
+          <DisplayComponent finalResult={finalResult} result={result} />
+          {/* Clear and C buttons */}
+          <ClearComponent
+            clearEverything={clearEverything}
+            clearLastValue={clearLastValue}
+          />
+          {/* Arithmatic Operators */}
+          <OperatorButton symArr={symArr} click={click} />
+          {/* Numbers */}
+          <NumberButtons numArr={numArr} click={click} />
+          {/* Equals */}
+          <EqualsOperator calulateResult={calulateResult} />
+        </div>
+      </section>
+    </>
   );
 }
-
-export const sumPositiveNum = (num1, num2) => {
-  if (num1 < 0 || num2 < 2) throw new Error('Num should be positive');
-
-  return num1 + num2;
-};
-
