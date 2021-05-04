@@ -14,7 +14,7 @@ export default function test() {
   const [finalResult, setFinalResult] = React.useState(0);
 
   // function that handles onClick functionality for all numbers and signs
-  const click = value => {
+  const numOperatorClick = value => {
     setFinalResult(0);
     setInput(input.concat(value));
   };
@@ -54,9 +54,9 @@ export default function test() {
             clearLastValue={clearLastValue}
           />
           {/* Arithmatic Operators */}
-          <OperatorButton symArr={symArr} click={click} />
+          <OperatorButton symArr={symArr} numOperatorClick={numOperatorClick} />
           {/* Numbers */}
-          <NumberButtons numArr={numArr} click={click} />
+          <NumberButtons numArr={numArr} numOperatorClick={numOperatorClick} />
           {/* Equals */}
           <EqualsOperator calulateResult={calulateResult} />
         </div>
