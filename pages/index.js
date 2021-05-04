@@ -10,24 +10,24 @@ const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const symArr = ['+', '-', '*', '/'];
 
 export default function test() {
-  const [result, setResult] = React.useState('');
+  const [input, setInput] = React.useState('');
   const [finalResult, setFinalResult] = React.useState(0);
 
   // function that handles onClick functionality for all numbers and signs
   const click = value => {
     setFinalResult(0);
-    setResult(result.concat(value));
+    setInput(input.concat(value));
   };
 
   // function for C button: it clears last value and resets final value
   const clearLastValue = () => {
-    setResult(result.slice(0, result.length - 1));
+    setInput(input.slice(0, input.length - 1));
     setFinalResult(0);
   };
 
   // function for Clear button: it clears everything and resets back to intial state
   const clearEverything = () => {
-    setResult('');
+    setInput('');
     setFinalResult(0);
   };
 
@@ -35,10 +35,10 @@ export default function test() {
   // operation
   const calulateResult = () => {
     try {
-      setFinalResult(eval(result).toString());
-      setResult('');
+      setFinalResult(eval(input).toString());
+      setInput('');
     } catch (error) {
-      setResult('Error');
+      setInput('Error');
     }
   };
 
@@ -47,7 +47,7 @@ export default function test() {
       <section className="flex flex-col min-h-screen justify-center items-center font-bold text-4xl bg-gray-100">
         <div className=" flex flex-col mx-auto w-11/12 sm:max-w-md  bg-blue-200  rounded-lg  border p-6 space-y-5 ">
           {/* Input value displays the inputs or the final result */}
-          <DisplayComponent finalResult={finalResult} result={result} />
+          <DisplayComponent finalResult={finalResult} input={input} />
           {/* Clear and C buttons */}
           <ClearComponent
             clearEverything={clearEverything}
