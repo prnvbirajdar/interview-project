@@ -37,7 +37,7 @@ export default function test() {
   // operation
   const calulateResult = () => {
     try {
-      setFinalResult(eval(input).toFixed(3));
+      setFinalResult(eval(input).toFixed(2));
       setInput('');
     } catch (error) {
       // if someone enters num++++ or ++++num or num====,
