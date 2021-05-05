@@ -1,11 +1,6 @@
 import React from 'react';
 
-export default function ClearComponent({
- 
-  input,
-  setInput,
-  setFinalResult
-}) {
+export default function ClearComponent({ input, setInput, setFinalResult }) {
   // function for C button: it clears last value and resets final value
   const clearLastValue = () => {
     setInput(input.slice(0, input.length - 1));

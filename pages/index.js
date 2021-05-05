@@ -10,6 +10,9 @@ export default function test() {
   // finalResult stores the final result in Number primitive and replaces the input value in the DisplayComponent
   const [finalResult, setFinalResult] = React.useState(0);
 
+
+
+
   return (
     <>
       <section className="flex  min-h-screen justify-center items-center font-bold text-lg text-gray-800 bg-gray-100">
@@ -22,7 +25,7 @@ export default function test() {
             setFinalResult={setFinalResult}
             setInput={setInput}
           />
-          {/* Number and Operators Function */}
+          {/* Number and Operators Component */}
           <NumbersAndOperatorsComponent
             symArr={symArr}
             numArr={numArr}
