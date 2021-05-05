@@ -37,7 +37,19 @@ export default function test() {
   // operation
   const calulateResult = () => {
     try {
-      setFinalResult(eval(input).toFixed(2));
+      const calculatedNum = eval(input);
+
+      const finalValue = calculatedNum
+        // fixes deciamals places to two,
+        .toFixed(2)
+        // converts the final value to string,
+        .toString()
+        // removed the unnecessary decimals (eg:12.00)
+        .replace(/(\.[0-9]*?)0+$/, '$1')
+        // removed the decimal point (eg: 12.)
+        .replace(/\.$/, '');
+
+      setFinalResult(finalValue);
       setInput('');
     } catch (error) {
       // if someone enters num++++ or ++++num or num====,
