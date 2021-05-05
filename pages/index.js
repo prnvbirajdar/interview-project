@@ -15,6 +15,8 @@ export default function test() {
   // finalResult stores the final result in Number primitive and replaces the input value in the DisplayComponent
   const [finalResult, setFinalResult] = React.useState(0);
 
+  console.log(finalResult);
+
   // function that handles onClick functionality for all numbers and signs
   const numOperatorClick = value => {
     setFinalResult(0);
@@ -38,18 +40,13 @@ export default function test() {
   const calulateResult = () => {
     try {
       const calculatedNum = eval(input);
+      // fixes deciamals places to two, converts the final value to string,
+      // parseFloat removes unnecessary decimals and 00
+      // eg: 12.00 becomes 12
+      const finalValue = parseFloat(calculatedNum.toFixed(2).toString());
 
-      const finalValue = calculatedNum
-        // fixes deciamals places to two,
-        .toFixed(2)
-        // converts the final value to string,
-        .toString()
-        // removed the unnecessary decimals (eg:12.00)
-        .replace(/(\.[0-9]*?)0+$/, '$1')
-        // removed the decimal point (eg: 12.)
-        .replace(/\.$/, '');
-
-      setFinalResult(finalValue);
+      // convert the final value to number and update the state
+      setFinalResult(Number(finalValue));
       setInput('');
     } catch (error) {
       // if someone enters num++++ or ++++num or num====,
@@ -61,8 +58,8 @@ export default function test() {
 
   return (
     <>
-      <section className="flex flex-col min-h-screen justify-center items-center font-bold text-4xl text-gray-800 bg-gray-100">
-        <div className=" flex flex-col  mx-auto w-11/12 sm:max-w-md bg-indigo-300  rounded-lg  border p-6 space-y-5 ">
+      <section className="flex  min-h-screen justify-center items-center font-bold text-lg text-gray-800 bg-gray-100">
+        <div className=" flex flex-col  mx-auto w-11/12 sm:max-w-md bg-gray-50  rounded-lg shadow-lg border-2 border-gray-400 p-6 space-y-5 ">
           {/* Input value displays the inputs or the final result */}
           <DisplayComponent finalResult={finalResult} input={input} />
           {/* Clear and C buttons */}
