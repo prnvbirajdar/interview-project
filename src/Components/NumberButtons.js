@@ -7,13 +7,9 @@ export default function NumberButtons({ numArr, numOperatorClick }) {
         {numArr.map((value, index) => {
           return (
             <div key={index} className="text-center">
-              <button
-                className="btn"
-                onClick={() => numOperatorClick(value)}
-              >
+              <button className="btn" onClick={() => numOperatorClick(value)}>
                 {value}
               </button>
-            
             </div>
           );
         })}

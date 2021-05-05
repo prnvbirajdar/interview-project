@@ -1,60 +1,14 @@
 import React from 'react';
 import ClearComponent from '../src/Components/ClearComponent';
 import DisplayComponent from '../src/Components/DisplayComponent';
-import NumberButtons from '../src/Components/NumberButtons';
-import OperatorButton, {
-  EqualsOperator
-} from '../src/Components/OperatorButton';
-
-const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-const symArr = ['+', '-', '*', '/'];
+import NumbersAndOperatorsComponent from '../src/Components/NumbersAndOperatorsComponent';
+import { numArr, symArr } from '../src/data/data';
 
 export default function test() {
   // Decided to go ahead with an empty string, since it was easier to use concat and eval methods on strings
   const [input, setInput] = React.useState('');
   // finalResult stores the final result in Number primitive and replaces the input value in the DisplayComponent
   const [finalResult, setFinalResult] = React.useState(0);
-
-  console.log(finalResult);
-
-  // function that handles onClick functionality for all numbers and signs
-  const numOperatorClick = value => {
-    setFinalResult(0);
-    setInput(input.concat(value));
-  };
-
-  // function for C button: it clears last value and resets final value
-  const clearLastValue = () => {
-    setInput(input.slice(0, input.length - 1));
-    setFinalResult(0);
-  };
-
-  // function for Clear button: it clears everything and resets back to intial state
-  const clearEverything = () => {
-    setInput('');
-    setFinalResult(0);
-  };
-
-  // function for the = symbol: it calculates and gives final results or displays error message if there's a wrong
-  // operation
-  const calulateResult = () => {
-    try {
-      const calculatedNum = eval(input);
-      // fixes deciamals places to two, converts the final value to string,
-      // parseFloat removes unnecessary decimals and 00
-      // eg: 12.00 becomes 12
-      const finalValue = parseFloat(calculatedNum.toFixed(2).toString());
-
-      // convert the final value to number and update the state
-      setFinalResult(Number(finalValue));
-      setInput('');
-    } catch (error) {
-      // if someone enters num++++ or ++++num or num====,
-      // instead of crashing, the app resets the state and works normally
-      setInput('Error');
-      setInput('');
-    }
-  };
 
   return (
     <>
@@ -64,15 +18,18 @@ export default function test() {
           <DisplayComponent finalResult={finalResult} input={input} />
           {/* Clear and C buttons */}
           <ClearComponent
-            clearEverything={clearEverything}
-            clearLastValue={clearLastValue}
+            input={input}
+            setFinalResult={setFinalResult}
+            setInput={setInput}
           />
-          {/* Arithmatic Operators */}
-          <OperatorButton symArr={symArr} numOperatorClick={numOperatorClick} />
-          {/* Numbers */}
-          <NumberButtons numArr={numArr} numOperatorClick={numOperatorClick} />
-          {/* Equals */}
-          <EqualsOperator calulateResult={calulateResult} />
+          {/* Number and Operators Function */}
+          <NumbersAndOperatorsComponent
+            symArr={symArr}
+            numArr={numArr}
+            input={input}
+            setFinalResult={setFinalResult}
+            setInput={setInput}
+          />
         </div>
       </section>
     </>
